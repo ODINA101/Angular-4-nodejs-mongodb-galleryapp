@@ -1,0 +1,31 @@
+<div class="container" style="margin-top:20px;">
+
+  <button md-raised-button color="accent" routerLink="/">back</button>
+
+ <form #f="ngForm" (ngSubmit)="addnewphoto(f.value)">
+
+
+ <md-input-container>
+   <input mdInput placeholder="img link" name="link" [(ngModel)]="link" required />
+ </md-input-container>
+
+<button md-raised-button color="primary" [disabled]="!f.valid" type="submit">add to gallery</button>
+
+ </form>
+ <h1>OR OTHER WAY</h1>
+
+
+  <label class="btn btn-default btn-file">
+  Select image from computer <input type="file" name="filetoupload" ng2FileSelect [uploader]="uploader" />
+</label>
+
+
+<div (click)="clcked()">
+
+
+  <button type="button" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length" md-raised-button color="primary">Upload</button>
+ </div>
+</div>
+ <div *ngIf="loading">
+   <md-spinner></md-spinner>
+ </div>
